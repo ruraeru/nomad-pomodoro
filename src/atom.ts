@@ -40,8 +40,8 @@ export interface IStage {
 export const stageState = atom<IStage>({
   key: "stageState",
   default: {
-    ROUND: 4,
-    GOAL: 11,
+    ROUND: 0,
+    GOAL: 0,
   },
   //   effects: [localStorageEffect("stage")],
 });

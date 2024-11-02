@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { IStage, stageState, timerActiveState, timeState } from "./atom";
-import { useEffect, useRef } from "react";
+import { stageState, timerActiveState, timeState } from "./atom";
+import { useEffect, useState } from "react";
 
 const Card = styled(motion.div)`
   width: 200px;
@@ -18,7 +18,6 @@ const Card = styled(motion.div)`
   color: tomato;
   font-size: 100px;
   font-weight: 800;
-
 `
 const Wrapper = styled.div` 
   width: 100vw;
@@ -109,7 +108,6 @@ function App() {
         }
       }
       setTime(0.1 * 60 * 1000);
-      setTimerActive(false);
     }
 
     return () => {
@@ -126,7 +124,8 @@ function App() {
         <Title>Pomodoro</Title>
       </Header>
       <CardWrapper>
-        <Card>
+        <Card key={Math.floor(time / (1000 * 60)) % 60} initial={{ scale: 0.5 }}
+          animate={{ scale: 1 }}>
           <p>{String(Math.floor(time / (1000 * 60)) % 60).padStart(2, "0")}</p>
         </Card>
         <div>
@@ -138,18 +137,8 @@ function App() {
             :
           </p>
         </div>
-        <Card
-          initial={{
-            scale: 0.1
-          }}
-          animate={{
-            scale: 1
-          }}
-          transition={{
-            repeat: Infinity,
-            repeatDelay: 1
-          }}
-        >
+        <Card key={time} initial={{ scale: 0.5 }}
+          animate={{ scale: 1 }}>
           <p>{String(Math.floor(time / 1000) % 60).padStart(2, "0")}</p>
         </Card>
       </CardWrapper>
@@ -178,7 +167,6 @@ function App() {
         <button onClick={() => {
           setStage({ ROUND: 0, GOAL: 0 })
           setTime(25 * 60 * 1000)
-          setTimerActive(false);
         }}>Reset</button>
       </StateWrapper>
     </Wrapper >
