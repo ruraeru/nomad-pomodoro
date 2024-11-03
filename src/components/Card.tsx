@@ -6,7 +6,6 @@ import React from "react";
 
 function Card() {
     const { MIN, SEC } = useRecoilValue(timeSelector);
-    console.log(MIN, SEC)
     return (
         <Wrapper>
             <CardWrapper key={MIN + Math.PI} variants={CardVariatns} initial="start"

@@ -27,7 +27,8 @@ export default function Timer() {
                 GOAL: prev.GOAL + 1
             }
         });
-    }, [setStage, setTimerActive]);
+        setTime(10);
+    }, [setStage, setTime, setTimerActive]);
 
     useEffect(() => {
         let timeoutId: NodeJS.Timeout | undefined;
