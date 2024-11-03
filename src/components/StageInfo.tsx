@@ -1,26 +1,20 @@
-import { useRecoilValue } from "recoil";
-import { stageState } from "../atom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { stageState, timerActiveState, timeState } from "../atom";
 import styled from "styled-components";
 import { Svg } from "./StateBtn";
 
-interface IInfoProps {
-    reset: {
-        stage: Function,
-        time: Function,
-        timerState: Function
-    }
-}
-
-export default function StageInfo({ reset }: IInfoProps) {
-    const { stage, time, timerState } = reset;
+export default function StageInfo() {
+    const setStage = useSetRecoilState(stageState);
+    const setTime = useSetRecoilState(timeState);
+    const setTimerActive = useSetRecoilState(timerActiveState);
     const { ROUND, GOAL } = useRecoilValue(stageState);
     const onReset = () => {
-        stage({
+        setStage({
             ROUND: 0,
             GOAL: 0
         });
-        time(10);
-        timerState(false);
+        setTime(10);
+        setTimerActive(false);
     }
     return (
         <Wrapper>
