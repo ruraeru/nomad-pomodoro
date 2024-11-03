@@ -45,7 +45,7 @@ export default function App() {
           })
         }
       }
-      setTime(60);
+      setTime(10);
     }
     return () => {
       clearInterval(timeLeft)

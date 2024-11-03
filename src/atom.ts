@@ -17,7 +17,7 @@ const localStorageEffect =
 
 export const timeState = atom({
   key: "timeState",
-  default: 2,
+  default: 10,
   effects: [localStorageEffect("time")],
 });
 

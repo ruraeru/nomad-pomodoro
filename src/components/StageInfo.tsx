@@ -19,7 +19,7 @@ export default function StageInfo({ reset }: IInfoProps) {
             ROUND: 0,
             GOAL: 0
         });
-        time(60);
+        time(10);
         timerState(false);
     }
     return (
