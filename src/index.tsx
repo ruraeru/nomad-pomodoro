@@ -32,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -52,13 +52,13 @@ table {
 `;
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+	document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <GlobalStyle />
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
-  </React.StrictMode>
+	<React.StrictMode>
+		<GlobalStyle />
+		<RecoilRoot>
+			<App />
+		</RecoilRoot>
+	</React.StrictMode>
 );

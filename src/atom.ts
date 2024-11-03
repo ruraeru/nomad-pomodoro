@@ -15,16 +15,10 @@ const localStorageEffect =
     });
   };
 
-interface ITime {
-  hours: number;
-  MIN: number;
-  SEC: number;
-}
-
 export const timeState = atom({
   key: "timeState",
-  default: 0.1 * 60 * 1000,
-  //   effects: [localStorageEffect("time")],
+  default: 2,
+  effects: [localStorageEffect("time")],
 });
 
 export const timerActiveState = atom({
@@ -43,12 +37,18 @@ export const stageState = atom<IStage>({
     ROUND: 0,
     GOAL: 0,
   },
-  //   effects: [localStorageEffect("stage")],
+  effects: [localStorageEffect("stage")],
 });
 
 export const timeSelector = selector({
   key: "timeSelector",
   get: ({ get }) => {
-    const stage = get(stageState);
+    const time = get(timeState);
+    const MIN = String(Math.floor(time / 60) % 60).padStart(2, "0");
+    const SEC = String(Math.floor(time % 60)).padStart(2, "0");
+    return {
+      MIN,
+      SEC,
+    };
   },
 });
